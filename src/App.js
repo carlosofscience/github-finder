@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Alert from "./components/layout/Alert";
 import Home from "./Pages/Home";
 import NotFound from "./Pages/NotFound";
 import About from "./Pages/About";
@@ -15,6 +16,7 @@ function App() {
         <div className="flex flex-col justify-between h-screen">
           <Navbar />
           <main className="container mx-auto px-3 pb-12">
+            <Alert />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
