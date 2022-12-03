@@ -7,7 +7,7 @@ import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import { GithubProvider } from "./context/github/GithubContext";
 import { AlertProvider } from "./context/alert/AlertContext";
-
+import User from "./Pages/User";
 function App() {
   return (
     <GithubProvider>
@@ -20,6 +20,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
+              <Route path="/users/:login" element={<User />} />
               <Route path="/notfound" element={<NotFound />} />
               <Route path="/*" element={<NotFound />} />
             </Routes>
