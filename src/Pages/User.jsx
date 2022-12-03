@@ -2,17 +2,19 @@ import { FaCodepen, FaStore, FaUserFriends, FaUsers } from "react-icons/fa";
 import { useEffect, useContext } from "react"
 import { useParams, Link } from "react-router-dom";
 import Spinner from "../components/layout/Spinner";
+import RepoList from "../components/repos/RepoList";
 import GithubContext from "../context/github/GithubContext"
 
 function User() {
 
-  const {getUser, user, loading} = useContext(GithubContext);
+  const {getUser, user, loading, getUserRepos, repos} = useContext(GithubContext);
 
   const params = useParams()
 
   useEffect(()=>{
     getUser(params.login)
-    // getUserRepos(params.login)
+    getUserRepos(params.login)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const {name, type, avatar_url, location, bio, blog, twitter_username, login, html_url, followers, following, public_repos, public_gists, hireable,} = user
@@ -58,7 +60,7 @@ function User() {
             </h1>
             <p>{bio}</p>
             <div className="mt-4 card-actions">
-              <a href={html_url} target='_blank' rel='noreferrel' className="btn btn-outline">
+              <a href={html_url} target='_blank' rel='noreferrer' className="btn btn-outline">
                 Visit Github Profile
               </a>
             </div>
@@ -77,7 +79,7 @@ function User() {
               <div className="stat">
                 <div className="stat-title text-md">Website</div>
                 <div className="text-lg stat-value">
-                  <a href={`${blog}`} target="_blank" rel="noreferrel">{blog}</a>
+                  <a href={`${blog}`} target="_blank" rel="noreferrer">{blog}</a>
                 </div>
               </div>
             )}
@@ -85,7 +87,7 @@ function User() {
               <div className="stat">
                 <div className="stat-title text-md">Twitter</div>
                 <div className="text-lg stat-value">
-                  <a href={`https://twitter.com/${twitter_username}`} target="_blank" rel="noreferrel">{twitter_username}</a>
+                  <a href={`https://twitter.com/${twitter_username}`} target="_blank" rel="noreferrer">{twitter_username}</a>
                 </div>
               </div>
             )}
@@ -128,6 +130,9 @@ function User() {
         </div>
       
       </div>
+        
+      <RepoList repos={repos}/>
+
     </div>  
   
   </>
