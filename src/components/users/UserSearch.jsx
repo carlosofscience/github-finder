@@ -42,7 +42,7 @@ function UserSearch() {
         </form>
       </div>
       <div>
-        {users.length > 0 && (<button onClick={() => dispatch({ type: "SET_LOADING" })} className="btn btn-ghost btn-lg">Clear</button>)}
+        {users.length > 0 && (<button onClick={() => dispatch({ type: "CLEAR_USERS" })} className="btn btn-ghost btn-lg">Clear</button>)}
       </div>
     </div>
   )
